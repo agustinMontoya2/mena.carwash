@@ -17,16 +17,10 @@ export function ImageWithFallback({
   if (error) {
     return (
       <div
-        className={className}
-        style={{
-          ...style,
-          background: "#0a1428",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
+        className={`${className ?? ""} bg-mena-fallback flex items-center justify-center`}
+        style={style}
       >
-        <span style={{ color: "#0a6eff", fontSize: 32 }}>🚗</span>
+        <span className="text-mena-fallback-icon text-[32px]">🚗</span>
       </div>
     )
   }
