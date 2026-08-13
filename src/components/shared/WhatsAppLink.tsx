@@ -22,6 +22,8 @@ export default function WhatsAppLink({
   return (
     <a
       href={WHATSAPP_URL}
+      target="_blank"
+      rel="noopener noreferrer"
       className={`${variantClasses[variant]} ${className ?? ""}`}
       {...rest}
     >

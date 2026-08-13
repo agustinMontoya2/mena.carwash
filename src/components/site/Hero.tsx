@@ -1,13 +1,28 @@
+import { services } from "@/data/services"
 import { heroStrip } from "@/data/gallery"
 import Container from "@/components/layout/Container"
 import { ImageWithFallback } from "@/components/shared/ImageWithFallback"
 import WhatsAppLink from "@/components/shared/WhatsAppLink"
 
-const priceTeasers = [
-  { label: "Autos desde", value: "$27.000" },
-  { label: "Camionetas desde", value: "$38.000" },
-  { label: "Motos", value: "$10.000" },
-]
+const categoryLabels: Record<string, string> = {
+  AUTOS: "Autos desde",
+  CAMIONETAS: "Camionetas desde",
+  MOTOS: "Motos",
+}
+
+function parsePrice(price: string): number {
+  return Number(price.replace(/\D/g, ""))
+}
+
+const priceTeasers = services.map((service) => {
+  const minPrice = Math.min(
+    ...service.plans.map((plan) => parsePrice(plan.price)),
+  )
+  return {
+    label: categoryLabels[service.category] ?? service.category,
+    value: `$${minPrice.toLocaleString("es-AR")}`,
+  }
+})
 
 export default function Hero() {
   return (
