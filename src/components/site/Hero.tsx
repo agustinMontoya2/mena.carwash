@@ -1,8 +1,6 @@
 import { services } from "@/data/services"
-import { heroStrip } from "@/data/gallery"
 import { WHATSAPP_GENERIC_MESSAGE } from "@/config/site"
 import Container from "@/components/layout/Container"
-import { ImageWithFallback } from "@/components/shared/ImageWithFallback"
 import WhatsAppLink from "@/components/shared/WhatsAppLink"
 
 const categoryLabels: Record<string, string> = {
@@ -75,23 +73,6 @@ export default function Hero() {
           ))}
         </div>
       </Container>
-
-      <div className="relative w-full h-[260px] overflow-hidden mt-2">
-        <div className="absolute inset-0 hero-strip-fade z-[2]" />
-        <div className="absolute bottom-0 left-0 right-0 h-20 hero-strip-bottom z-[2]" />
-        <div className="flex gap-3 px-4 h-full">
-          {heroStrip.map((img, i) => (
-            <ImageWithFallback
-              key={i}
-              src={img.src}
-              alt={img.alt}
-              className={`h-full w-auto object-cover rounded-xl flex-shrink-0 ${
-                i === 3 ? "max-w-[240px]" : "max-w-[380px]"
-              }`}
-            />
-          ))}
-        </div>
-      </div>
     </section>
   )
 }

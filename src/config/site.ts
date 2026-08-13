@@ -1,4 +1,5 @@
 export const BUSINESS_NAME = "MENA Car Wash"
+export const HOME = "/"
 export const WHATSAPP_NUMBER = "5491125877893"
 export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`
 export const PHONE_DISPLAY = "11 2587-7893"

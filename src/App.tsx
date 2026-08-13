@@ -6,8 +6,16 @@ import Gallery from "@/components/site/Gallery"
 import Reviews from "@/components/site/Reviews"
 import Contact from "@/components/site/Contact"
 import Footer from "@/components/site/Footer"
+import NotFound from "@/components/site/NotFound"
+import { HOME } from "@/config/site"
 
 export default function App() {
+  const isHome = window.location.pathname === HOME
+
+  if (!isHome) {
+    return <NotFound />
+  }
+
   return (
     <div className="bg-mena-bg text-mena-text min-h-screen">
       <header>
