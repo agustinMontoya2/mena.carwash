@@ -1,8 +1,7 @@
+import { navLinks } from "@/data/nav"
 import Container from "@/components/layout/Container"
 import InstagramLink from "@/components/shared/InstagramLink"
 import WhatsAppLink from "@/components/shared/WhatsAppLink"
-
-const NAV_LINKS = ["Servicios", "Precios", "Galería", "Contacto"]
 
 export default function Nav() {
   return (
@@ -17,7 +16,7 @@ export default function Nav() {
           </span>
         </div>
         <div className="hidden md:flex items-center gap-8">
-          {NAV_LINKS.map((item) => (
+          {navLinks.map((item) => (
             <a
               key={item}
               href={`#${item.toLowerCase()}`}

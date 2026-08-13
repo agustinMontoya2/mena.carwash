@@ -16,6 +16,7 @@ export default function Gallery() {
             <ImageWithFallback
               src={img.src}
               alt={img.alt}
+              loading="lazy"
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 block"
             />
           </div>
