@@ -48,6 +48,8 @@ This project uses **Tailwind CSS v4** through the `@tailwindcss/vite` plugin con
 
 ## Commit messages
 
+> **Authorization required:** never `git commit`, `git push`, `git revert`, or create PRs unless the user explicitly asks you to. Leave changes staged or in the working tree and report back.
+
 - **Format:** `MCS-<ID>: <summary>` (the `-m` of `git commit`).
 - `<ID>` matches the ticket the branch resolves (e.g. `MCS-001`).
 - `<summary>` is in English, imperative mood, present tense, ≤ 72 characters, no trailing period. Capitalize only the first word.
