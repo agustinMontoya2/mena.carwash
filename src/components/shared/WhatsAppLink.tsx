@@ -11,17 +11,23 @@ const variantClasses: Record<Variant, string> = {
 
 interface Props extends AnchorHTMLAttributes<HTMLAnchorElement> {
   variant?: Variant
+  message?: string
 }
 
 export default function WhatsAppLink({
   variant = "primary",
   className,
   children,
+  message,
   ...rest
 }: Props) {
+  const href = message
+    ? `${WHATSAPP_URL}?text=${encodeURIComponent(message)}`
+    : WHATSAPP_URL
+
   return (
     <a
-      href={WHATSAPP_URL}
+      href={href}
       target="_blank"
       rel="noopener noreferrer"
       className={`${variantClasses[variant]} ${className ?? ""}`}

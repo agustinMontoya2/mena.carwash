@@ -1,5 +1,6 @@
 import { services } from "@/data/services"
 import { heroStrip } from "@/data/gallery"
+import { WHATSAPP_GENERIC_MESSAGE } from "@/config/site"
 import Container from "@/components/layout/Container"
 import { ImageWithFallback } from "@/components/shared/ImageWithFallback"
 import WhatsAppLink from "@/components/shared/WhatsAppLink"
@@ -47,7 +48,10 @@ export default function Hero() {
         </p>
 
         <div className="flex flex-wrap gap-3.5 justify-center mb-14">
-          <WhatsAppLink className="px-8 py-3.5 rounded-[10px] text-[15px] tracking-[0.08em] uppercase">
+          <WhatsAppLink
+            className="px-8 py-3.5 rounded-[10px] text-[15px] tracking-[0.08em] uppercase"
+            message={WHATSAPP_GENERIC_MESSAGE}
+          >
             📱 Reservar por WhatsApp
           </WhatsAppLink>
           <a

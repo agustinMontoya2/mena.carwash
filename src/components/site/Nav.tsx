@@ -1,4 +1,5 @@
 import { navLinks } from "@/data/nav"
+import { WHATSAPP_GENERIC_MESSAGE } from "@/config/site"
 import Container from "@/components/layout/Container"
 import InstagramLink from "@/components/shared/InstagramLink"
 import WhatsAppLink from "@/components/shared/WhatsAppLink"
@@ -27,7 +28,10 @@ export default function Nav() {
           ))}
           <InstagramLink className="flex items-center gap-1.5 text-[13px] font-semibold text-mena-pink" />
         </div>
-        <WhatsAppLink className="px-[18px] py-2 rounded-lg text-[13px] tracking-[0.08em]">
+        <WhatsAppLink
+          className="px-[18px] py-2 rounded-lg text-[13px] tracking-[0.08em]"
+          message={WHATSAPP_GENERIC_MESSAGE}
+        >
           RESERVAR TURNO
         </WhatsAppLink>
       </Container>
