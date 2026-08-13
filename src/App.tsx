@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { ImageWithFallback } from "@/components/shared/ImageWithFallback"
+import type { Feature, GalleryImage, Review, Service } from "@/types"
 import {
   ADDRESS,
   BUSINESS_NAME,
@@ -16,7 +17,7 @@ import moto from "@/imports/image-3.png"
 import pickupSilver from "@/imports/image-4.png"
 import pickupBlue from "@/imports/image-5.png"
 
-const services = [
+const services: Service[] = [
   {
     category: "AUTOS",
     icon: "🚗",
@@ -99,14 +100,13 @@ const services = [
           "Acabado brillante",
         ],
         highlight: true,
-        solo: true,
       },
     ],
     jubilados: null,
   },
 ]
 
-const featureItems = [
+const featureItems: Feature[] = [
   {
     icon: "🛡️",
     title: "Limpieza Exterior e Interior Premium",
@@ -126,6 +126,35 @@ const featureItems = [
     icon: "🏆",
     title: "Acabados de Alta Calidad",
     desc: "Resultados de showroom en cada lavado, sin excepción.",
+  },
+]
+
+const heroStrip: GalleryImage[] = [
+  { src: pickupSilver, alt: "Camioneta plateada" },
+  { src: carGray, alt: "Auto gris" },
+  { src: pickupBlue, alt: "Camioneta azul" },
+  { src: moto, alt: "Moto Honda" },
+]
+
+const gallery: GalleryImage[] = [
+  { src: pickupSilver, alt: "Camioneta plateada recién lavada" },
+  { src: pickupBlue, alt: "VW Amarok azul brillando" },
+  { src: carGray, alt: "Auto gris con brillo perfecto" },
+  { src: carInterior, alt: "Interior de Audi A3 impecable" },
+  { src: moto, alt: "Moto Honda blanca reluciente" },
+  { src: pickupSilver, alt: "Pickup plateada, vista frontal" },
+]
+
+const reviews: Review[] = [
+  {
+    text: "¡Recomiendo mucho a estos chicos! Trabajo de excelencia. Todavía hay gente que gusta de trabajar 🤗",
+  },
+  {
+    text: "¡Gracias chicos! Quedó hermoso. Los super recomiendo!!!",
+    author: "Pao",
+  },
+  {
+    text: "SON UNOS CAPOS, DEJARON IMPECABLE, INMACULADA LA CAMIONETA.",
   },
 ]
 
@@ -447,12 +476,7 @@ export default function App() {
               height: "100%",
             }}
           >
-            {[
-              { src: pickupSilver, alt: "Camioneta plateada" },
-              { src: carGray, alt: "Auto gris" },
-              { src: pickupBlue, alt: "Camioneta azul" },
-              { src: moto, alt: "Moto Honda" },
-            ].map((img, i) => (
+            {heroStrip.map((img, i) => (
               <ImageWithFallback
                 key={i}
                 src={img.src}
@@ -922,14 +946,7 @@ export default function App() {
             gap: 14,
           }}
         >
-          {[
-            { src: pickupSilver, alt: "Camioneta plateada recién lavada" },
-            { src: pickupBlue, alt: "VW Amarok azul brillando" },
-            { src: carGray, alt: "Auto gris con brillo perfecto" },
-            { src: carInterior, alt: "Interior de Audi A3 impecable" },
-            { src: moto, alt: "Moto Honda blanca reluciente" },
-            { src: pickupSilver, alt: "Pickup plateada, vista frontal" },
-          ].map((img, i) => (
+          {gallery.map((img, i) => (
             <div
               key={i}
               style={{
@@ -1006,18 +1023,7 @@ export default function App() {
             gap: 20,
           }}
         >
-          {[
-            {
-              text: "¡Recomiendo mucho a estos chicos! Trabajo de excelencia. Todavía hay gente que gusta de trabajar 🤗",
-            },
-            {
-              text: "¡Gracias chicos! Quedó hermoso. Los super recomiendo!!!",
-              author: "Pao",
-            },
-            {
-              text: "SON UNOS CAPOS, DEJARON IMPECABLE, INMACULADA LA CAMIONETA.",
-            },
-          ].map((review, i) => (
+          {reviews.map((review, i) => (
             <div
               key={i}
               className="card"
