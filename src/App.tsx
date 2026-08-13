@@ -1,6 +1,5 @@
 import { useState } from "react"
 import { ImageWithFallback } from "@/components/shared/ImageWithFallback"
-import type { Feature, GalleryImage, Review, Service } from "@/types"
 import {
   ADDRESS,
   BUSINESS_NAME,
@@ -11,152 +10,10 @@ import {
   PHONE_DISPLAY,
   WHATSAPP_URL,
 } from "@/config/site"
-import carGray from "@/imports/image-1.png"
-import carInterior from "@/imports/image-2.png"
-import moto from "@/imports/image-3.png"
-import pickupSilver from "@/imports/image-4.png"
-import pickupBlue from "@/imports/image-5.png"
-
-const services: Service[] = [
-  {
-    category: "AUTOS",
-    icon: "🚗",
-    photo: carGray,
-    photoAlt: "Auto gris en MENA Car Wash",
-    plans: [
-      {
-        name: "Lavado Clásico",
-        price: "$30.000",
-        desc: "Lavado interior exterior, siliconado y aplique cera premium",
-        features: [
-          "Exterior completo",
-          "Interior premium",
-          "Siliconado",
-          "Cera premium",
-        ],
-        highlight: false,
-      },
-      {
-        name: "MENA Premium",
-        price: "$45.000",
-        desc: "Tratamiento profesional completo con productos Toxic Shine",
-        features: [
-          "Descontaminación férrica de llantas y cubierta",
-          "Descontaminación de carrocería",
-          "Lavado premium interior",
-          "Aplique cera premium",
-        ],
-        highlight: true,
-      },
-    ],
-    jubilados: { clasico: "$25.000", premium: "$35.000" },
-  },
-  {
-    category: "CAMIONETAS",
-    icon: "🛻",
-    photo: pickupBlue,
-    photoAlt: "Camioneta azul en MENA Car Wash",
-    plans: [
-      {
-        name: "Lavado Clásico",
-        price: "$40.000",
-        desc: "Lavado interior exterior, siliconado y aplique cera premium",
-        features: [
-          "Exterior completo",
-          "Interior premium",
-          "Siliconado",
-          "Cera premium",
-        ],
-        highlight: false,
-      },
-      {
-        name: "MENA Premium",
-        price: "$55.000",
-        desc: "Tratamiento profesional completo con productos Toxic Shine",
-        features: [
-          "Descontaminación férrica de llantas y cubierta",
-          "Descontaminación de carrocería",
-          "Lavado premium interior",
-          "Aplique cera premium",
-        ],
-        highlight: true,
-      },
-    ],
-    jubilados: { clasico: "$35.000", premium: "$45.000" },
-  },
-  {
-    category: "MOTOS",
-    icon: "🏍️",
-    photo: moto,
-    photoAlt: "Moto Honda en MENA Car Wash",
-    plans: [
-      {
-        name: "Lavado de Moto",
-        price: "$10.000",
-        desc: "Limpieza completa de la moto con productos premium",
-        features: [
-          "Lavado exterior completo",
-          "Siliconado",
-          "Acabado brillante",
-        ],
-        highlight: true,
-      },
-    ],
-    jubilados: null,
-  },
-]
-
-const featureItems: Feature[] = [
-  {
-    icon: "🛡️",
-    title: "Limpieza Exterior e Interior Premium",
-    desc: "Cada rincón de tu vehículo tratado con máximo cuidado.",
-  },
-  {
-    icon: "✨",
-    title: "Brillo y Protección",
-    desc: "Aplicación de cera y protectores que duran semanas.",
-  },
-  {
-    icon: "🧴",
-    title: "Productos Premium",
-    desc: "Trabajamos con productos Toxic Shine de industria argentina.",
-  },
-  {
-    icon: "🏆",
-    title: "Acabados de Alta Calidad",
-    desc: "Resultados de showroom en cada lavado, sin excepción.",
-  },
-]
-
-const heroStrip: GalleryImage[] = [
-  { src: pickupSilver, alt: "Camioneta plateada" },
-  { src: carGray, alt: "Auto gris" },
-  { src: pickupBlue, alt: "Camioneta azul" },
-  { src: moto, alt: "Moto Honda" },
-]
-
-const gallery: GalleryImage[] = [
-  { src: pickupSilver, alt: "Camioneta plateada recién lavada" },
-  { src: pickupBlue, alt: "VW Amarok azul brillando" },
-  { src: carGray, alt: "Auto gris con brillo perfecto" },
-  { src: carInterior, alt: "Interior de Audi A3 impecable" },
-  { src: moto, alt: "Moto Honda blanca reluciente" },
-  { src: pickupSilver, alt: "Pickup plateada, vista frontal" },
-]
-
-const reviews: Review[] = [
-  {
-    text: "¡Recomiendo mucho a estos chicos! Trabajo de excelencia. Todavía hay gente que gusta de trabajar 🤗",
-  },
-  {
-    text: "¡Gracias chicos! Quedó hermoso. Los super recomiendo!!!",
-    author: "Pao",
-  },
-  {
-    text: "SON UNOS CAPOS, DEJARON IMPECABLE, INMACULADA LA CAMIONETA.",
-  },
-]
+import { features } from "@/data/features"
+import { gallery, heroStrip } from "@/data/gallery"
+import { reviews } from "@/data/reviews"
+import { services } from "@/data/services"
 
 const igIcon = (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
@@ -506,7 +363,7 @@ export default function App() {
             gap: 16,
           }}
         >
-          {featureItems.map((f) => (
+          {features.map((f) => (
             <div
               key={f.title}
               className="card"
