@@ -68,12 +68,13 @@ git commit -m "MCS-002: centralize business contact data in config"
 To avoid typing the whole git routine manually, use the helper scripts in `scripts/`:
 
 - `scripts/start-ticket.ps1 -Id <ID> -Title "<english-kebab-title>"` - switches to `main`, pulls, and creates `MCS-<ID>-<slug>`.
-- `scripts/ship.ps1 -Id <ID> -Summary "<english summary>"` - stages everything, commits with `MCS-<ID>: <summary>`, pushes the branch, and creates the PR to `main` with `gh`.
+- `scripts/ship.ps1 -Id <ID> -Summary "<english summary>"` - stages everything, commits with `MCS-<ID>: <summary>`, and pushes the branch. Does **not** create a PR.
+- `scripts/pr.ps1 -Id <ID> -Title "<english summary>"` - creates the PR to `main` with `gh`. Run it only when the user asks for the PR.
 
 Requirements:
 
 - GitHub CLI (`gh`) installed (`winget install GitHub.cli`) and authenticated (`gh auth login`).
-- The user requests a ticket by saying "resolver MCS-<ID>": run `start-ticket`, implement the change, verify with the quality commands, then run `ship`.
+- The user requests a ticket by saying "resolver MCS-<ID>": run `start-ticket`, implement the change, verify with the quality commands, then run `ship`. The PR is a **separate, explicit request** — never create one from "resolver".
 
 ## Quality commands
 

@@ -1,4 +1,7 @@
 import { useState } from "react"
+import Container from "@/components/layout/Container"
+import Section from "@/components/layout/Section"
+import SectionHeading from "@/components/layout/SectionHeading"
 import { ImageWithFallback } from "@/components/shared/ImageWithFallback"
 import {
   ADDRESS,
@@ -28,7 +31,7 @@ export default function App() {
     <div className="bg-mena-bg text-mena-text min-h-screen">
       {/* NAV */}
       <nav className="fixed top-0 w-full z-50 bg-mena-bg/95 backdrop-blur-md border-b border-mena-border/20">
-        <div className="max-w-[1152px] mx-auto px-4 h-14 flex items-center justify-between">
+        <Container className="h-14 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <span className="font-display font-black text-xl tracking-[0.12em]">
               <span className="chrome-text">MENA</span>
@@ -62,12 +65,12 @@ export default function App() {
           >
             RESERVAR TURNO
           </a>
-        </div>
+        </Container>
       </nav>
 
       {/* HERO */}
       <section className="pt-24 min-h-screen flex flex-col items-center justify-center text-center overflow-hidden">
-        <div className="max-w-[800px] mx-auto px-4">
+        <Container maxWidth="max-w-[800px]">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 mb-7 px-[18px] py-1.5 border border-mena-border/40 rounded-full text-[11px] font-semibold tracking-[0.2em] text-mena-azure uppercase">
             Industria Argentina · Productos Toxic Shine
@@ -122,7 +125,7 @@ export default function App() {
               </div>
             ))}
           </div>
-        </div>
+        </Container>
 
         {/* Vehicle photo strip */}
         <div className="relative w-full h-[260px] overflow-hidden mt-2">
@@ -143,7 +146,7 @@ export default function App() {
       </section>
 
       {/* FEATURES */}
-      <section className="py-[72px] px-4 max-w-[1152px] mx-auto">
+      <Section>
         <div className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-4">
           {features.map((f) => (
             <div key={f.title} className="card px-5 py-6 text-center">
@@ -157,175 +160,158 @@ export default function App() {
             </div>
           ))}
         </div>
-      </section>
+      </Section>
 
       {/* PRECIOS */}
-      <section id="precios" className="py-[72px]">
-        <div className="max-w-[1152px] mx-auto px-4">
-          <div className="text-center mb-12">
-            <p className="text-[11px] font-bold tracking-[0.3em] text-mena-deep uppercase mb-2.5">
-              Nuestros Servicios
-            </p>
-            <h2 className="font-display chrome-text text-[clamp(2rem,5vw,3rem)] font-black mb-5">
-              PRECIOS
-            </h2>
-            <div className="divider max-w-[200px] mx-auto" />
-          </div>
+      <Section id="precios">
+        <SectionHeading eyebrow="Nuestros Servicios" title="PRECIOS" divider />
 
-          {/* Tabs */}
-          <div className="flex justify-center gap-3 mb-10 flex-wrap">
-            {services.map((s, i) => (
-              <button
-                key={s.category}
-                onClick={() => setActiveTab(i)}
+        {/* Tabs */}
+        <div className="flex justify-center gap-3 mb-10 flex-wrap">
+          {services.map((s, i) => (
+            <button
+              key={s.category}
+              onClick={() => setActiveTab(i)}
+              className={
+                i === activeTab
+                  ? "btn-primary font-display px-6 py-2.5 rounded-[10px] text-[13px] font-bold tracking-[0.1em] uppercase cursor-pointer"
+                  : "btn-outline font-display bg-transparent px-6 py-2.5 rounded-[10px] text-[13px] font-bold tracking-[0.1em] uppercase cursor-pointer"
+              }
+            >
+              {s.icon} {s.category}
+            </button>
+          ))}
+        </div>
+
+        {/* Active service panel */}
+        {services.map((service, si) =>
+          si !== activeTab ? null : (
+            <div key={service.category}>
+              {/* Photo banner */}
+              <div className="relative rounded-[20px] overflow-hidden mb-8 h-[260px]">
+                <ImageWithFallback
+                  src={service.photo}
+                  alt={service.photoAlt}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 banner-overlay" />
+                <div className="absolute inset-0 flex flex-col justify-center pl-9">
+                  <p className="text-[11px] font-bold tracking-[0.3em] text-mena-accent uppercase mb-1.5">
+                    Servicio para
+                  </p>
+                  <h3 className="font-display chrome-text text-[clamp(2rem,5vw,3.2rem)] font-black mb-1.5">
+                    {service.category}
+                  </h3>
+                  <p className="text-[13px] text-mena-sub-deep font-semibold">
+                    Limpieza que se nota, calidad que dura.
+                  </p>
+                </div>
+              </div>
+
+              {/* Pricing cards */}
+              <div
                 className={
-                  i === activeTab
-                    ? "btn-primary font-display px-6 py-2.5 rounded-[10px] text-[13px] font-bold tracking-[0.1em] uppercase cursor-pointer"
-                    : "btn-outline font-display bg-transparent px-6 py-2.5 rounded-[10px] text-[13px] font-bold tracking-[0.1em] uppercase cursor-pointer"
+                  service.plans.length === 1
+                    ? "grid grid-cols-1 gap-5 mb-5 max-w-[420px] mx-auto"
+                    : "grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-5 mb-5"
                 }
               >
-                {s.icon} {s.category}
-              </button>
-            ))}
-          </div>
-
-          {/* Active service panel */}
-          {services.map((service, si) =>
-            si !== activeTab ? null : (
-              <div key={service.category}>
-                {/* Photo banner */}
-                <div className="relative rounded-[20px] overflow-hidden mb-8 h-[260px]">
-                  <ImageWithFallback
-                    src={service.photo}
-                    alt={service.photoAlt}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 banner-overlay" />
-                  <div className="absolute inset-0 flex flex-col justify-center pl-9">
-                    <p className="text-[11px] font-bold tracking-[0.3em] text-mena-accent uppercase mb-1.5">
-                      Servicio para
+                {service.plans.map((plan) => (
+                  <div
+                    key={plan.name}
+                    className={
+                      plan.highlight
+                        ? "card-highlight px-7 py-8 relative"
+                        : "card px-7 py-8 relative"
+                    }
+                  >
+                    {plan.highlight && (
+                      <div className="absolute top-4 right-4 bg-mena-primary text-white text-[10px] font-bold tracking-[0.12em] px-3 py-1 rounded-full uppercase">
+                        Más Popular
+                      </div>
+                    )}
+                    <h4 className="font-display text-[11px] font-bold text-mena-accent tracking-[0.2em] uppercase mb-2">
+                      {plan.name}
+                    </h4>
+                    <div className="font-display chrome-text text-[clamp(2rem,4vw,2.6rem)] font-black mb-2">
+                      {plan.price}
+                    </div>
+                    <p className="text-[13px] text-mena-dim mb-5 font-body leading-normal">
+                      {plan.desc}
                     </p>
-                    <h3 className="font-display chrome-text text-[clamp(2rem,5vw,3.2rem)] font-black mb-1.5">
-                      {service.category}
-                    </h3>
-                    <p className="text-[13px] text-mena-sub-deep font-semibold">
-                      Limpieza que se nota, calidad que dura.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Pricing cards */}
-                <div
-                  className={
-                    service.plans.length === 1
-                      ? "grid grid-cols-1 gap-5 mb-5 max-w-[420px] mx-auto"
-                      : "grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-5 mb-5"
-                  }
-                >
-                  {service.plans.map((plan) => (
-                    <div
-                      key={plan.name}
+                    <ul className="list-none p-0 m-0 mb-6 flex flex-col gap-2">
+                      {plan.features.map((f) => (
+                        <li
+                          key={f}
+                          className="flex items-start gap-2 text-[13px] text-mena-muted font-body"
+                        >
+                          <span className="text-mena-primary mt-0.5 flex-shrink-0">
+                            ✓
+                          </span>{" "}
+                          {f}
+                        </li>
+                      ))}
+                    </ul>
+                    <a
+                      href={WHATSAPP_URL}
                       className={
                         plan.highlight
-                          ? "card-highlight px-7 py-8 relative"
-                          : "card px-7 py-8 relative"
+                          ? "btn-primary font-display block text-center py-[11px] rounded-lg text-xs font-bold tracking-[0.1em] uppercase no-underline"
+                          : "btn-outline font-display block text-center py-[11px] rounded-lg text-xs font-bold tracking-[0.1em] uppercase no-underline"
                       }
                     >
-                      {plan.highlight && (
-                        <div className="absolute top-4 right-4 bg-mena-primary text-white text-[10px] font-bold tracking-[0.12em] px-3 py-1 rounded-full uppercase">
-                          Más Popular
-                        </div>
-                      )}
-                      <h4 className="font-display text-[11px] font-bold text-mena-accent tracking-[0.2em] uppercase mb-2">
-                        {plan.name}
-                      </h4>
-                      <div className="font-display chrome-text text-[clamp(2rem,4vw,2.6rem)] font-black mb-2">
-                        {plan.price}
-                      </div>
-                      <p className="text-[13px] text-mena-dim mb-5 font-body leading-normal">
-                        {plan.desc}
-                      </p>
-                      <ul className="list-none p-0 m-0 mb-6 flex flex-col gap-2">
-                        {plan.features.map((f) => (
-                          <li
-                            key={f}
-                            className="flex items-start gap-2 text-[13px] text-mena-muted font-body"
-                          >
-                            <span className="text-mena-primary mt-0.5 flex-shrink-0">
-                              ✓
-                            </span>{" "}
-                            {f}
-                          </li>
-                        ))}
-                      </ul>
-                      <a
-                        href={WHATSAPP_URL}
-                        className={
-                          plan.highlight
-                            ? "btn-primary font-display block text-center py-[11px] rounded-lg text-xs font-bold tracking-[0.1em] uppercase no-underline"
-                            : "btn-outline font-display block text-center py-[11px] rounded-lg text-xs font-bold tracking-[0.1em] uppercase no-underline"
-                        }
-                      >
-                        Reservar Turno
-                      </a>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Jubilados */}
-                {service.jubilados && (
-                  <div className="card px-7 py-6">
-                    <div className="flex items-center gap-2.5 mb-4 flex-wrap">
-                      <span className="text-[22px]">👴👵</span>
-                      <span className="font-display text-xs font-bold text-mena-accent tracking-[0.15em] uppercase">
-                        Descuento a Jubilados
-                      </span>
-                      <span className="ml-auto text-xs text-mena-faint font-body">
-                        Presentando carnet de jubilado
-                      </span>
-                    </div>
-                    <div className="grid grid-cols-2 gap-3">
-                      {[
-                        {
-                          label: "Lavado Clásico",
-                          value: service.jubilados.clasico,
-                        },
-                        {
-                          label: "MENA Premium",
-                          value: service.jubilados.premium,
-                        },
-                      ].map((item) => (
-                        <div
-                          key={item.label}
-                          className="text-center p-3 bg-mena-surface-raised rounded-[10px]"
-                        >
-                          <p className="text-[10px] text-mena-faint uppercase tracking-[0.1em] mb-1">
-                            {item.label}
-                          </p>
-                          <p className="font-display text-2xl font-extrabold text-mena-accent">
-                            {item.value}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
+                      Reservar Turno
+                    </a>
                   </div>
-                )}
+                ))}
               </div>
-            ),
-          )}
-        </div>
-      </section>
+
+              {/* Jubilados */}
+              {service.jubilados && (
+                <div className="card px-7 py-6">
+                  <div className="flex items-center gap-2.5 mb-4 flex-wrap">
+                    <span className="text-[22px]">👴👵</span>
+                    <span className="font-display text-xs font-bold text-mena-accent tracking-[0.15em] uppercase">
+                      Descuento a Jubilados
+                    </span>
+                    <span className="ml-auto text-xs text-mena-faint font-body">
+                      Presentando carnet de jubilado
+                    </span>
+                  </div>
+                  <div className="grid grid-cols-2 gap-3">
+                    {[
+                      {
+                        label: "Lavado Clásico",
+                        value: service.jubilados.clasico,
+                      },
+                      {
+                        label: "MENA Premium",
+                        value: service.jubilados.premium,
+                      },
+                    ].map((item) => (
+                      <div
+                        key={item.label}
+                        className="text-center p-3 bg-mena-surface-raised rounded-[10px]"
+                      >
+                        <p className="text-[10px] text-mena-faint uppercase tracking-[0.1em] mb-1">
+                          {item.label}
+                        </p>
+                        <p className="font-display text-2xl font-extrabold text-mena-accent">
+                          {item.value}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          ),
+        )}
+      </Section>
 
       {/* GALERÍA */}
-      <section id="galería" className="py-[72px] px-4 max-w-[1152px] mx-auto">
-        <div className="text-center mb-12">
-          <p className="text-[11px] font-bold tracking-[0.3em] text-mena-deep uppercase mb-2.5">
-            Nuestros Trabajos
-          </p>
-          <h2 className="font-display chrome-text text-[clamp(2rem,5vw,3rem)] font-black">
-            GALERÍA
-          </h2>
-        </div>
+      <Section id="galería">
+        <SectionHeading eyebrow="Nuestros Trabajos" title="GALERÍA" />
         <div className="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-3.5">
           {gallery.map((img, i) => (
             <div
@@ -340,19 +326,15 @@ export default function App() {
             </div>
           ))}
         </div>
-      </section>
+      </Section>
 
       {/* REVIEWS */}
-      <section className="py-[72px] px-4 max-w-[1152px] mx-auto">
-        <div className="text-center mb-12">
-          <p className="text-[11px] font-bold tracking-[0.3em] text-mena-deep uppercase mb-2.5">
-            Lo que dicen nuestros clientes
-          </p>
-          <h2 className="font-display chrome-text text-[clamp(2rem,5vw,3rem)] font-black mb-5">
-            OPINIONES
-          </h2>
-          <div className="divider max-w-[200px] mx-auto" />
-        </div>
+      <Section>
+        <SectionHeading
+          eyebrow="Lo que dicen nuestros clientes"
+          title="OPINIONES"
+          divider
+        />
         <div className="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-5">
           {reviews.map((review, i) => (
             <div key={i} className="card px-6 py-7 flex flex-col gap-[18px]">
@@ -382,83 +364,77 @@ export default function App() {
             </div>
           ))}
         </div>
-      </section>
+      </Section>
 
       {/* CONTACTO */}
-      <section id="contacto" className="py-[72px] px-4">
-        <div className="max-w-[720px] mx-auto text-center">
-          <p className="text-[11px] font-bold tracking-[0.3em] text-mena-deep uppercase mb-2.5">
-            Contactate con Nosotros
+      <Section id="contacto" containerClassName="max-w-[720px] text-center">
+        <SectionHeading
+          eyebrow="Contactate con Nosotros"
+          title="¡YA TENEMOS WHATSAPP!"
+          subtitle="Agendá tu turno de forma rápida y sencilla."
+        />
+
+        {/* Contact card */}
+        <div className="card-highlight px-8 py-10 rounded-[20px] mb-5">
+          <p className="text-[11px] font-bold tracking-[0.25em] text-mena-accent uppercase mb-3">
+            Turnos y Consultas
           </p>
-          <h2 className="font-display chrome-text text-[clamp(2rem,5vw,3rem)] font-black mb-2.5">
-            ¡YA TENEMOS WHATSAPP!
-          </h2>
-          <p className="text-[15px] text-mena-dim font-semibold mb-9">
-            Agendá tu turno de forma rápida y sencilla.
-          </p>
-
-          {/* Contact card */}
-          <div className="card-highlight px-8 py-10 rounded-[20px] mb-5">
-            <p className="text-[11px] font-bold tracking-[0.25em] text-mena-accent uppercase mb-3">
-              Turnos y Consultas
-            </p>
-            <a
-              href={WHATSAPP_URL}
-              className="font-display chrome-text text-[clamp(2.2rem,8vw,4rem)] font-black block mb-7 no-underline"
-            >
-              {PHONE_DISPLAY}
-            </a>
-            <a
-              href={WHATSAPP_URL}
-              className="btn-primary font-display inline-block px-9 py-3.5 rounded-[10px] text-sm font-bold tracking-[0.08em] uppercase no-underline"
-            >
-              📱 ¡Escribinos y Reservá tu Turno!
-            </a>
-          </div>
-
-          {/* Social + Maps buttons */}
-          <div className="flex flex-wrap gap-3 justify-center mb-7">
-            <a
-              href={INSTAGRAM_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="ig-gradient flex items-center gap-2 px-5 py-2.5 rounded-[10px] font-bold text-[13px] text-white no-underline transition-opacity hover:opacity-85"
-            >
-              {igIcon} {INSTAGRAM_HANDLE}
-            </a>
-            <a
-              href={MAPS_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-outline flex items-center gap-2 px-5 py-2.5 rounded-[10px] font-bold text-[13px] no-underline"
-            >
-              📍 {ADDRESS}
-            </a>
-          </div>
-
-          {/* Map embed */}
-          <div className="rounded-2xl overflow-hidden border border-mena-border/30 h-80">
-            <iframe
-              title={`Ubicación ${BUSINESS_NAME}`}
-              src={MAPS_EMBED_URL}
-              width="100%"
-              height="100%"
-              style={{
-                border: 0,
-                filter:
-                  "invert(88%) hue-rotate(180deg) saturate(0.7) brightness(0.8)",
-              }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
-          </div>
+          <a
+            href={WHATSAPP_URL}
+            className="font-display chrome-text text-[clamp(2.2rem,8vw,4rem)] font-black block mb-7 no-underline"
+          >
+            {PHONE_DISPLAY}
+          </a>
+          <a
+            href={WHATSAPP_URL}
+            className="btn-primary font-display inline-block px-9 py-3.5 rounded-[10px] text-sm font-bold tracking-[0.08em] uppercase no-underline"
+          >
+            📱 ¡Escribinos y Reservá tu Turno!
+          </a>
         </div>
-      </section>
+
+        {/* Social + Maps buttons */}
+        <div className="flex flex-wrap gap-3 justify-center mb-7">
+          <a
+            href={INSTAGRAM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ig-gradient flex items-center gap-2 px-5 py-2.5 rounded-[10px] font-bold text-[13px] text-white no-underline transition-opacity hover:opacity-85"
+          >
+            {igIcon} {INSTAGRAM_HANDLE}
+          </a>
+          <a
+            href={MAPS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-outline flex items-center gap-2 px-5 py-2.5 rounded-[10px] font-bold text-[13px] no-underline"
+          >
+            📍 {ADDRESS}
+          </a>
+        </div>
+
+        {/* Map embed */}
+        <div className="rounded-2xl overflow-hidden border border-mena-border/30 h-80">
+          <iframe
+            title={`Ubicación ${BUSINESS_NAME}`}
+            src={MAPS_EMBED_URL}
+            width="100%"
+            height="100%"
+            style={{
+              border: 0,
+              filter:
+                "invert(88%) hue-rotate(180deg) saturate(0.7) brightness(0.8)",
+            }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+        </div>
+      </Section>
 
       {/* FOOTER */}
       <footer className="py-9 px-4 border-t border-mena-border/15 text-center">
-        <div className="max-w-[1152px] mx-auto">
+        <Container>
           <div className="flex items-center justify-center gap-2.5 mb-3.5">
             <span className="font-display chrome-text text-[22px] font-black tracking-[0.15em]">
               MENA
@@ -486,7 +462,7 @@ export default function App() {
           <p className="text-[11px] text-mena-navy-deep tracking-[0.08em] font-body">
             Más brillo, más cuidado, mejores resultados. · {ADDRESS}
           </p>
-        </div>
+        </Container>
       </footer>
     </div>
   )
