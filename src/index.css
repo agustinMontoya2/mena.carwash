@@ -98,21 +98,6 @@ html, body {
   background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
 }
 
-/* Hero photo strip edge fades */
-.hero-strip-fade {
-  background: linear-gradient(
-    to right,
-    var(--color-mena-bg) 0%,
-    transparent 12%,
-    transparent 88%,
-    var(--color-mena-bg) 100%
-  );
-}
-
-.hero-strip-bottom {
-  background: linear-gradient(to top, var(--color-mena-bg), transparent);
-}
-
 /* Pricing banner dark overlay */
 .banner-overlay {
   background: linear-gradient(
@@ -166,3 +151,41 @@ html, body {
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--color-mena-bg); }
 ::-webkit-scrollbar-thumb { background: var(--color-mena-primary); border-radius: 2px; }
+
+/* Swiper carousel (MENA theme) */
+.carousel {
+  width: 100%;
+}
+
+.carousel .swiper {
+  padding-bottom: 48px;
+}
+
+.carousel .swiper-slide {
+  width: min(420px, 82vw);
+}
+
+.carousel .swiper-3d .swiper-slide-shadow-left,
+.carousel .swiper-3d .swiper-slide-shadow-right {
+  background-image: none;
+}
+
+.carousel .swiper-pagination-bullet {
+  background: color-mix(in srgb, var(--color-mena-border) 45%, transparent);
+  opacity: 1;
+}
+
+.carousel .swiper-pagination-bullet-active {
+  background: var(--color-mena-primary);
+}
+
+.carousel .swiper-button-prev,
+.carousel .swiper-button-next {
+  color: var(--color-mena-outline);
+  transition: color 0.18s;
+}
+
+.carousel .swiper-button-prev:hover,
+.carousel .swiper-button-next:hover {
+  color: #ffffff;
+}
