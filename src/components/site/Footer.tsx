@@ -1,12 +1,7 @@
-import {
-  ADDRESS,
-  INSTAGRAM_HANDLE,
-  INSTAGRAM_URL,
-  PHONE_DISPLAY,
-  WHATSAPP_URL,
-} from "@/config/site"
+import { ADDRESS, PHONE_DISPLAY } from "@/config/site"
 import Container from "@/components/layout/Container"
-import InstagramIcon from "@/components/shared/InstagramIcon"
+import InstagramLink from "@/components/shared/InstagramLink"
+import WhatsAppLink from "@/components/shared/WhatsAppLink"
 
 export default function Footer() {
   return (
@@ -21,20 +16,13 @@ export default function Footer() {
           </span>
         </div>
         <div className="flex justify-center gap-6 mb-3.5 flex-wrap">
-          <a
-            href={INSTAGRAM_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 text-[13px] font-semibold text-mena-pink-deep no-underline"
-          >
-            <InstagramIcon /> {INSTAGRAM_HANDLE}
-          </a>
-          <a
-            href={WHATSAPP_URL}
-            className="flex items-center gap-1.5 text-[13px] font-semibold text-mena-green no-underline"
+          <InstagramLink className="flex items-center gap-1.5 text-[13px] font-semibold text-mena-pink-deep" />
+          <WhatsAppLink
+            variant="text"
+            className="flex items-center gap-1.5 text-[13px] font-semibold text-mena-green"
           >
             📱 {PHONE_DISPLAY}
-          </a>
+          </WhatsAppLink>
         </div>
         <p className="text-[11px] text-mena-navy-deep tracking-[0.08em] font-body">
           Más brillo, más cuidado, mejores resultados. · {ADDRESS}

@@ -14,10 +14,18 @@ export default function Pricing() {
     <Section id="precios">
       <SectionHeading eyebrow="Nuestros Servicios" title="PRECIOS" divider />
 
-      <div className="flex justify-center gap-3 mb-10 flex-wrap">
+      <div
+        role="tablist"
+        aria-label="Servicios"
+        className="flex justify-center gap-3 mb-10 flex-wrap"
+      >
         {services.map((s, i) => (
           <button
             key={s.category}
+            role="tab"
+            aria-selected={i === activeTab}
+            aria-controls={`pricing-panel-${i}`}
+            id={`pricing-tab-${i}`}
             onClick={() => setActiveTab(i)}
             className={
               i === activeTab
@@ -30,7 +38,12 @@ export default function Pricing() {
         ))}
       </div>
 
-      <div key={service.category}>
+      <div
+        key={service.category}
+        role="tabpanel"
+        id={`pricing-panel-${activeTab}`}
+        aria-labelledby={`pricing-tab-${activeTab}`}
+      >
         <div className="relative rounded-[20px] overflow-hidden mb-8 h-[260px]">
           <ImageWithFallback
             src={service.photo}
