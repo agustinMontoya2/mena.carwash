@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { services } from "@/data/services"
+import { buildJubiladosMessage, buildPlanMessage } from "@/config/site"
 import Section from "@/components/layout/Section"
 import SectionHeading from "@/components/layout/SectionHeading"
 import { ImageWithFallback } from "@/components/shared/ImageWithFallback"
@@ -72,11 +73,20 @@ export default function Pricing() {
           }
         >
           {service.plans.map((plan) => (
-            <PricingCard key={plan.name} plan={plan} />
+            <PricingCard
+              key={plan.name}
+              plan={plan}
+              message={buildPlanMessage(plan.name, service.category)}
+            />
           ))}
         </div>
 
-        {service.jubilados && <JubiladosCard jubilados={service.jubilados} />}
+        {service.jubilados && (
+          <JubiladosCard
+            jubilados={service.jubilados}
+            message={buildJubiladosMessage(service.category)}
+          />
+        )}
       </div>
     </Section>
   )

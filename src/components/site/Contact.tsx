@@ -4,6 +4,8 @@ import {
   MAPS_EMBED_URL,
   MAPS_URL,
   PHONE_DISPLAY,
+  WHATSAPP_CONTACT_MESSAGE,
+  WHATSAPP_GENERIC_MESSAGE,
 } from "@/config/site"
 import Section from "@/components/layout/Section"
 import SectionHeading from "@/components/layout/SectionHeading"
@@ -26,10 +28,14 @@ export default function Contact() {
         <WhatsAppLink
           variant="text"
           className="font-display chrome-text text-[clamp(2.2rem,8vw,4rem)] font-black block mb-7"
+          message={WHATSAPP_CONTACT_MESSAGE}
         >
           {PHONE_DISPLAY}
         </WhatsAppLink>
-        <WhatsAppLink className="inline-block px-9 py-3.5 rounded-[10px] text-sm font-bold tracking-[0.08em] uppercase">
+        <WhatsAppLink
+          className="inline-block px-9 py-3.5 rounded-[10px] text-sm font-bold tracking-[0.08em] uppercase"
+          message={WHATSAPP_GENERIC_MESSAGE}
+        >
           📱 ¡Escribinos y Reservá tu Turno!
         </WhatsAppLink>
       </div>

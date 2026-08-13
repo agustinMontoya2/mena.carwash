@@ -3,9 +3,10 @@ import WhatsAppLink from "@/components/shared/WhatsAppLink"
 
 interface Props {
   plan: Plan
+  message: string
 }
 
-export default function PricingCard({ plan }: Props) {
+export default function PricingCard({ plan, message }: Props) {
   return (
     <div
       className={
@@ -42,6 +43,7 @@ export default function PricingCard({ plan }: Props) {
       <WhatsAppLink
         variant={plan.highlight ? "primary" : "outline"}
         className="block text-center py-[11px] rounded-lg text-xs font-bold tracking-[0.1em] uppercase"
+        message={message}
       >
         Reservar Turno
       </WhatsAppLink>

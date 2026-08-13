@@ -71,7 +71,11 @@ if (-not $body) {
   $body = "## MCS-{0:D3}: {1}`n`nTicket resuelto. Agregar descripción en el ticket MCS-{0:D3} para más detalle." -f $Id, $Title, $Id
 }
 
-& (Get-GhExe) pr create --base main --head $branch --title $title --body $body
+$bodyFile = Join-Path $env:TEMP ("mena-pr-{0:D3}-body.md" -f $Id)
+[System.IO.File]::WriteAllText($bodyFile, $body, [System.Text.UTF8Encoding]::new($false))
+
+& (Get-GhExe) pr create --base main --head $branch --title $title --body-file $bodyFile
 if ($LASTEXITCODE -ne 0) { throw "gh pr create fallo" }
+Remove-Item $bodyFile -ErrorAction SilentlyContinue
 
 Write-Host "PR de $branch hacia main creado." -ForegroundColor Green

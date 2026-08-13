@@ -1,10 +1,12 @@
 import type { Jubilados } from "@/types"
+import WhatsAppLink from "@/components/shared/WhatsAppLink"
 
 interface Props {
   jubilados: Jubilados
+  message: string
 }
 
-export default function JubiladosCard({ jubilados }: Props) {
+export default function JubiladosCard({ jubilados, message }: Props) {
   return (
     <div className="card px-7 py-6">
       <div className="flex items-center gap-2.5 mb-4 flex-wrap">
@@ -16,7 +18,7 @@ export default function JubiladosCard({ jubilados }: Props) {
           Presentando carnet de jubilado
         </span>
       </div>
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-2 gap-3 mb-5">
         {[
           { label: "Lavado Clásico", value: jubilados.clasico },
           { label: "MENA Premium", value: jubilados.premium },
@@ -34,6 +36,13 @@ export default function JubiladosCard({ jubilados }: Props) {
           </div>
         ))}
       </div>
+      <WhatsAppLink
+        variant="outline"
+        className="block text-center py-[11px] rounded-lg text-xs font-bold tracking-[0.1em] uppercase"
+        message={message}
+      >
+        Consultar Descuento
+      </WhatsAppLink>
     </div>
   )
 }
