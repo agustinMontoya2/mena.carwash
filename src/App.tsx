@@ -25,68 +25,24 @@ export default function App() {
   const [activeTab, setActiveTab] = useState(0)
 
   return (
-    <div
-      style={{ background: "#0a0a0a", color: "#e0e8f0", minHeight: "100vh" }}
-    >
+    <div className="bg-mena-bg text-mena-text min-h-screen">
       {/* NAV */}
-      <nav
-        style={{
-          position: "fixed",
-          top: 0,
-          width: "100%",
-          zIndex: 50,
-          background: "rgba(10,10,10,0.95)",
-          backdropFilter: "blur(10px)",
-          borderBottom: "1px solid rgba(30,100,200,0.2)",
-        }}
-      >
-        <div
-          style={{
-            maxWidth: 1152,
-            margin: "0 auto",
-            padding: "0 16px",
-            height: 56,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-            <span
-              className="font-display"
-              style={{ fontWeight: 900, fontSize: 20, letterSpacing: "0.12em" }}
-            >
+      <nav className="fixed top-0 w-full z-50 bg-mena-bg/95 backdrop-blur-md border-b border-mena-border/20">
+        <div className="max-w-[1152px] mx-auto px-4 h-14 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <span className="font-display font-black text-xl tracking-[0.12em]">
               <span className="chrome-text">MENA</span>
             </span>
-            <span
-              style={{
-                fontSize: 11,
-                letterSpacing: "0.3em",
-                color: "#5080c0",
-                textTransform: "uppercase",
-              }}
-            >
+            <span className="text-[11px] tracking-[0.3em] text-mena-slate uppercase">
               Car Wash
             </span>
           </div>
-          <div
-            style={{ display: "flex", alignItems: "center", gap: 32 }}
-            className="hidden md:flex"
-          >
+          <div className="hidden md:flex items-center gap-8">
             {["Servicios", "Precios", "Galería", "Contacto"].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                style={{
-                  fontSize: 13,
-                  fontWeight: 600,
-                  letterSpacing: "0.1em",
-                  color: "#8aabcc",
-                  textDecoration: "none",
-                  transition: "color 0.15s",
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "#fff")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "#8aabcc")}
+                className="text-[13px] font-semibold tracking-[0.1em] text-mena-muted no-underline transition-colors hover:text-white"
               >
                 {item}
               </a>
@@ -95,30 +51,14 @@ export default function App() {
               href={INSTAGRAM_URL}
               target="_blank"
               rel="noopener noreferrer"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 6,
-                fontSize: 13,
-                fontWeight: 600,
-                color: "#d070a0",
-                textDecoration: "none",
-              }}
+              className="flex items-center gap-1.5 text-[13px] font-semibold text-mena-pink no-underline"
             >
               {igIcon} {INSTAGRAM_HANDLE}
             </a>
           </div>
           <a
             href={WHATSAPP_URL}
-            className="btn-primary"
-            style={{
-              padding: "8px 18px",
-              borderRadius: 8,
-              fontSize: 13,
-              letterSpacing: "0.08em",
-              textDecoration: "none",
-              fontFamily: "Orbitron, sans-serif",
-            }}
+            className="btn-primary font-display px-[18px] py-2 rounded-lg text-[13px] tracking-[0.08em] no-underline"
           >
             RESERVAR TURNO
           </a>
@@ -126,168 +66,57 @@ export default function App() {
       </nav>
 
       {/* HERO */}
-      <section
-        style={{
-          paddingTop: 96,
-          paddingBottom: 0,
-          minHeight: "100vh",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          textAlign: "center",
-          overflow: "hidden",
-        }}
-      >
-        <div style={{ maxWidth: 800, margin: "0 auto", padding: "0 16px" }}>
+      <section className="pt-24 min-h-screen flex flex-col items-center justify-center text-center overflow-hidden">
+        <div className="max-w-[800px] mx-auto px-4">
           {/* Badge */}
-          <div
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 8,
-              marginBottom: 28,
-              padding: "6px 18px",
-              border: "1px solid rgba(30,80,180,0.4)",
-              borderRadius: 999,
-              fontSize: 11,
-              fontWeight: 600,
-              letterSpacing: "0.2em",
-              color: "#6090c0",
-              textTransform: "uppercase",
-            }}
-          >
+          <div className="inline-flex items-center gap-2 mb-7 px-[18px] py-1.5 border border-mena-border/40 rounded-full text-[11px] font-semibold tracking-[0.2em] text-mena-azure uppercase">
             Industria Argentina · Productos Toxic Shine
           </div>
 
           {/* Main title */}
-          <h1
-            className="font-display chrome-hero"
-            style={{
-              fontSize: "clamp(4rem, 14vw, 9rem)",
-              fontWeight: 900,
-              lineHeight: 0.9,
-              letterSpacing: "-0.01em",
-              marginBottom: 8,
-            }}
-          >
+          <h1 className="font-display chrome-hero text-[clamp(4rem,14vw,9rem)] font-black leading-[0.9] tracking-[-0.01em] mb-2">
             MENA
           </h1>
-          <div
-            className="font-display"
-            style={{
-              fontSize: "clamp(0.75rem, 2vw, 1.1rem)",
-              letterSpacing: "0.55em",
-              color: "#3a6aaa",
-              marginBottom: 28,
-              textTransform: "uppercase",
-              fontWeight: 700,
-            }}
-          >
+          <div className="font-display text-[clamp(0.75rem,2vw,1.1rem)] tracking-[0.55em] text-mena-deep mb-7 uppercase font-bold">
             — CAR WASH —
           </div>
 
           {/* Headline */}
-          <p
-            className="font-display"
-            style={{
-              fontSize: "clamp(1.2rem, 3.5vw, 2.2rem)",
-              fontWeight: 700,
-              color: "#d8e8f8",
-              lineHeight: 1.25,
-              marginBottom: 8,
-            }}
-          >
+          <p className="font-display text-[clamp(1.2rem,3.5vw,2.2rem)] font-bold text-mena-bright leading-[1.25] mb-2">
             ¡TODOS TUS LAVADOS TIENEN DESCUENTO!
           </p>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: "#5a7a9a",
-              fontWeight: 600,
-              marginBottom: 40,
-              letterSpacing: "0.05em",
-            }}
-          >
+          <p className="text-[1.05rem] text-mena-sub font-semibold mb-10 tracking-[0.05em]">
             Limpieza que se nota, calidad que dura.
           </p>
 
           {/* CTAs */}
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              gap: 14,
-              justifyContent: "center",
-              marginBottom: 56,
-            }}
-          >
+          <div className="flex flex-wrap gap-3.5 justify-center mb-14">
             <a
               href={WHATSAPP_URL}
-              className="btn-primary font-display"
-              style={{
-                padding: "14px 32px",
-                borderRadius: 10,
-                fontSize: 15,
-                letterSpacing: "0.08em",
-                textDecoration: "none",
-                textTransform: "uppercase",
-              }}
+              className="btn-primary font-display px-8 py-3.5 rounded-[10px] text-[15px] tracking-[0.08em] no-underline uppercase"
             >
               📱 Reservar por WhatsApp
             </a>
             <a
               href="#precios"
-              className="btn-outline font-display"
-              style={{
-                padding: "14px 32px",
-                borderRadius: 10,
-                fontSize: 15,
-                letterSpacing: "0.08em",
-                textDecoration: "none",
-                textTransform: "uppercase",
-              }}
+              className="btn-outline font-display px-8 py-3.5 rounded-[10px] text-[15px] tracking-[0.08em] no-underline uppercase"
             >
               Ver Precios
             </a>
           </div>
 
           {/* Price teasers */}
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
-              gap: 16,
-              maxWidth: 420,
-              margin: "0 auto",
-              paddingBottom: 56,
-            }}
-          >
+          <div className="grid grid-cols-3 gap-4 max-w-[420px] mx-auto pb-14">
             {[
               { label: "Autos desde", value: "$27.000" },
               { label: "Camionetas desde", value: "$38.000" },
               { label: "Motos", value: "$10.000" },
             ].map((item) => (
-              <div key={item.label} style={{ textAlign: "center" }}>
-                <div
-                  className="font-display"
-                  style={{
-                    fontWeight: 800,
-                    fontSize: "1.15rem",
-                    color: "#4a8ad8",
-                  }}
-                >
+              <div key={item.label} className="text-center">
+                <div className="font-display font-extrabold text-[1.15rem] text-mena-accent">
                   {item.value}
                 </div>
-                <div
-                  style={{
-                    fontSize: 10,
-                    color: "#3a5a7a",
-                    marginTop: 4,
-                    letterSpacing: "0.1em",
-                    textTransform: "uppercase",
-                  }}
-                >
+                <div className="text-[10px] text-mena-faint mt-1 tracking-[0.1em] uppercase">
                   {item.label}
                 </div>
               </div>
@@ -296,56 +125,17 @@ export default function App() {
         </div>
 
         {/* Vehicle photo strip */}
-        <div
-          style={{
-            position: "relative",
-            width: "100%",
-            height: 260,
-            overflow: "hidden",
-            marginTop: 8,
-          }}
-        >
-          <div
-            style={{
-              position: "absolute",
-              inset: 0,
-              background:
-                "linear-gradient(to right, #0a0a0a 0%, transparent 12%, transparent 88%, #0a0a0a 100%)",
-              zIndex: 2,
-            }}
-          />
-          <div
-            style={{
-              position: "absolute",
-              bottom: 0,
-              left: 0,
-              right: 0,
-              height: 80,
-              background: "linear-gradient(to top, #0a0a0a, transparent)",
-              zIndex: 2,
-            }}
-          />
-          <div
-            style={{
-              display: "flex",
-              gap: 12,
-              padding: "0 16px",
-              height: "100%",
-            }}
-          >
+        <div className="relative w-full h-[260px] overflow-hidden mt-2">
+          <div className="absolute inset-0 hero-strip-fade z-[2]" />
+          <div className="absolute bottom-0 left-0 right-0 h-20 hero-strip-bottom z-[2]" />
+          <div className="flex gap-3 px-4 h-full">
             {heroStrip.map((img, i) => (
               <ImageWithFallback
                 key={i}
                 src={img.src}
                 alt={img.alt}
-                style={{
-                  height: "100%",
-                  width: "auto",
-                  objectFit: "cover",
-                  borderRadius: 12,
-                  flexShrink: 0,
-                  maxWidth: i === 3 ? 240 : 380,
-                }}
+                className="h-full w-auto object-cover rounded-xl flex-shrink-0"
+                style={{ maxWidth: i === 3 ? 240 : 380 }}
               />
             ))}
           </div>
@@ -353,44 +143,15 @@ export default function App() {
       </section>
 
       {/* FEATURES */}
-      <section
-        style={{ padding: "72px 16px", maxWidth: 1152, margin: "0 auto" }}
-      >
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-            gap: 16,
-          }}
-        >
+      <section className="py-[72px] px-4 max-w-[1152px] mx-auto">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-4">
           {features.map((f) => (
-            <div
-              key={f.title}
-              className="card"
-              style={{ padding: "24px 20px", textAlign: "center" }}
-            >
-              <div style={{ fontSize: 28, marginBottom: 12 }}>{f.icon}</div>
-              <h3
-                className="font-display"
-                style={{
-                  fontWeight: 700,
-                  fontSize: 11,
-                  color: "#4a8ad8",
-                  marginBottom: 8,
-                  textTransform: "uppercase",
-                  letterSpacing: "0.1em",
-                }}
-              >
+            <div key={f.title} className="card px-5 py-6 text-center">
+              <div className="text-[28px] mb-3">{f.icon}</div>
+              <h3 className="font-display font-bold text-[11px] text-mena-accent mb-2 uppercase tracking-[0.1em]">
                 {f.title}
               </h3>
-              <p
-                style={{
-                  fontSize: 13,
-                  color: "#4a6a8a",
-                  lineHeight: 1.6,
-                  fontFamily: "Inter, sans-serif",
-                }}
-              >
+              <p className="text-[13px] text-mena-dim leading-[1.6] font-body">
                 {f.desc}
               </p>
             </div>
@@ -399,66 +160,29 @@ export default function App() {
       </section>
 
       {/* PRECIOS */}
-      <section id="precios" style={{ padding: "72px 0" }}>
-        <div style={{ maxWidth: 1152, margin: "0 auto", padding: "0 16px" }}>
-          <div style={{ textAlign: "center", marginBottom: 48 }}>
-            <p
-              style={{
-                fontSize: 11,
-                fontWeight: 700,
-                letterSpacing: "0.3em",
-                color: "#3a6aaa",
-                textTransform: "uppercase",
-                marginBottom: 10,
-              }}
-            >
+      <section id="precios" className="py-[72px]">
+        <div className="max-w-[1152px] mx-auto px-4">
+          <div className="text-center mb-12">
+            <p className="text-[11px] font-bold tracking-[0.3em] text-mena-deep uppercase mb-2.5">
               Nuestros Servicios
             </p>
-            <h2
-              className="font-display chrome-text"
-              style={{
-                fontSize: "clamp(2rem, 5vw, 3rem)",
-                fontWeight: 900,
-                marginBottom: 20,
-              }}
-            >
+            <h2 className="font-display chrome-text text-[clamp(2rem,5vw,3rem)] font-black mb-5">
               PRECIOS
             </h2>
-            <div
-              className="divider"
-              style={{ maxWidth: 200, margin: "0 auto" }}
-            />
+            <div className="divider max-w-[200px] mx-auto" />
           </div>
 
           {/* Tabs */}
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              gap: 12,
-              marginBottom: 40,
-              flexWrap: "wrap",
-            }}
-          >
+          <div className="flex justify-center gap-3 mb-10 flex-wrap">
             {services.map((s, i) => (
               <button
                 key={s.category}
                 onClick={() => setActiveTab(i)}
                 className={
                   i === activeTab
-                    ? "btn-primary font-display"
-                    : "btn-outline font-display"
+                    ? "btn-primary font-display px-6 py-2.5 rounded-[10px] text-[13px] font-bold tracking-[0.1em] uppercase cursor-pointer"
+                    : "btn-outline font-display bg-transparent px-6 py-2.5 rounded-[10px] text-[13px] font-bold tracking-[0.1em] uppercase cursor-pointer"
                 }
-                style={{
-                  padding: "10px 24px",
-                  borderRadius: 10,
-                  fontSize: 13,
-                  fontWeight: 700,
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                  cursor: "pointer",
-                  background: i === activeTab ? "#1a5fd4" : "transparent",
-                }}
               >
                 {s.icon} {s.category}
               </button>
@@ -470,71 +194,21 @@ export default function App() {
             si !== activeTab ? null : (
               <div key={service.category}>
                 {/* Photo banner */}
-                <div
-                  style={{
-                    position: "relative",
-                    borderRadius: 20,
-                    overflow: "hidden",
-                    marginBottom: 32,
-                    height: 260,
-                  }}
-                >
+                <div className="relative rounded-[20px] overflow-hidden mb-8 h-[260px]">
                   <ImageWithFallback
                     src={service.photo}
                     alt={service.photoAlt}
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                    }}
+                    className="w-full h-full object-cover"
                   />
-                  <div
-                    style={{
-                      position: "absolute",
-                      inset: 0,
-                      background:
-                        "linear-gradient(to right, rgba(10,10,10,0.88) 0%, rgba(10,10,10,0.3) 55%, rgba(10,10,10,0.55) 100%)",
-                    }}
-                  />
-                  <div
-                    style={{
-                      position: "absolute",
-                      inset: 0,
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "center",
-                      paddingLeft: 36,
-                    }}
-                  >
-                    <p
-                      style={{
-                        fontSize: 11,
-                        fontWeight: 700,
-                        letterSpacing: "0.3em",
-                        color: "#4a8ad8",
-                        textTransform: "uppercase",
-                        marginBottom: 6,
-                      }}
-                    >
+                  <div className="absolute inset-0 banner-overlay" />
+                  <div className="absolute inset-0 flex flex-col justify-center pl-9">
+                    <p className="text-[11px] font-bold tracking-[0.3em] text-mena-accent uppercase mb-1.5">
                       Servicio para
                     </p>
-                    <h3
-                      className="font-display chrome-text"
-                      style={{
-                        fontSize: "clamp(2rem, 5vw, 3.2rem)",
-                        fontWeight: 900,
-                        marginBottom: 6,
-                      }}
-                    >
+                    <h3 className="font-display chrome-text text-[clamp(2rem,5vw,3.2rem)] font-black mb-1.5">
                       {service.category}
                     </h3>
-                    <p
-                      style={{
-                        fontSize: 13,
-                        color: "#4a7aaa",
-                        fontWeight: 600,
-                      }}
-                    >
+                    <p className="text-[13px] text-mena-sub-deep font-semibold">
                       Limpieza que se nota, calidad que dura.
                     </p>
                   </div>
@@ -542,107 +216,42 @@ export default function App() {
 
                 {/* Pricing cards */}
                 <div
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns:
-                      service.plans.length === 1
-                        ? "1fr"
-                        : "repeat(auto-fit, minmax(280px, 1fr))",
-                    gap: 20,
-                    marginBottom: 20,
-                    maxWidth: service.plans.length === 1 ? 420 : undefined,
-                    margin:
-                      service.plans.length === 1 ? "0 auto 20px" : undefined,
-                  }}
+                  className={
+                    service.plans.length === 1
+                      ? "grid grid-cols-1 gap-5 mb-5 max-w-[420px] mx-auto"
+                      : "grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-5 mb-5"
+                  }
                 >
                   {service.plans.map((plan) => (
                     <div
                       key={plan.name}
-                      className={plan.highlight ? "card-highlight" : "card"}
-                      style={{ padding: "32px 28px", position: "relative" }}
+                      className={
+                        plan.highlight
+                          ? "card-highlight px-7 py-8 relative"
+                          : "card px-7 py-8 relative"
+                      }
                     >
                       {plan.highlight && (
-                        <div
-                          style={{
-                            position: "absolute",
-                            top: 16,
-                            right: 16,
-                            background: "#1a5fd4",
-                            color: "#fff",
-                            fontSize: 10,
-                            fontWeight: 700,
-                            letterSpacing: "0.12em",
-                            padding: "4px 12px",
-                            borderRadius: 999,
-                            textTransform: "uppercase",
-                          }}
-                        >
+                        <div className="absolute top-4 right-4 bg-mena-primary text-white text-[10px] font-bold tracking-[0.12em] px-3 py-1 rounded-full uppercase">
                           Más Popular
                         </div>
                       )}
-                      <h4
-                        className="font-display"
-                        style={{
-                          fontSize: 11,
-                          fontWeight: 700,
-                          color: "#4a8ad8",
-                          letterSpacing: "0.2em",
-                          textTransform: "uppercase",
-                          marginBottom: 8,
-                        }}
-                      >
+                      <h4 className="font-display text-[11px] font-bold text-mena-accent tracking-[0.2em] uppercase mb-2">
                         {plan.name}
                       </h4>
-                      <div
-                        className="font-display chrome-text"
-                        style={{
-                          fontSize: "clamp(2rem, 4vw, 2.6rem)",
-                          fontWeight: 900,
-                          marginBottom: 8,
-                        }}
-                      >
+                      <div className="font-display chrome-text text-[clamp(2rem,4vw,2.6rem)] font-black mb-2">
                         {plan.price}
                       </div>
-                      <p
-                        style={{
-                          fontSize: 13,
-                          color: "#4a6a8a",
-                          marginBottom: 20,
-                          fontFamily: "Inter, sans-serif",
-                          lineHeight: 1.5,
-                        }}
-                      >
+                      <p className="text-[13px] text-mena-dim mb-5 font-body leading-normal">
                         {plan.desc}
                       </p>
-                      <ul
-                        style={{
-                          listStyle: "none",
-                          padding: 0,
-                          margin: "0 0 24px",
-                          display: "flex",
-                          flexDirection: "column",
-                          gap: 8,
-                        }}
-                      >
+                      <ul className="list-none p-0 m-0 mb-6 flex flex-col gap-2">
                         {plan.features.map((f) => (
                           <li
                             key={f}
-                            style={{
-                              display: "flex",
-                              alignItems: "flex-start",
-                              gap: 8,
-                              fontSize: 13,
-                              color: "#8aaac8",
-                              fontFamily: "Inter, sans-serif",
-                            }}
+                            className="flex items-start gap-2 text-[13px] text-mena-muted font-body"
                           >
-                            <span
-                              style={{
-                                color: "#1a5fd4",
-                                marginTop: 2,
-                                flexShrink: 0,
-                              }}
-                            >
+                            <span className="text-mena-primary mt-0.5 flex-shrink-0">
                               ✓
                             </span>{" "}
                             {f}
@@ -653,23 +262,9 @@ export default function App() {
                         href={WHATSAPP_URL}
                         className={
                           plan.highlight
-                            ? "btn-primary font-display"
-                            : "btn-outline font-display"
+                            ? "btn-primary font-display block text-center py-[11px] rounded-lg text-xs font-bold tracking-[0.1em] uppercase no-underline"
+                            : "btn-outline font-display block text-center py-[11px] rounded-lg text-xs font-bold tracking-[0.1em] uppercase no-underline"
                         }
-                        style={{
-                          display: "block",
-                          textAlign: "center",
-                          padding: "11px",
-                          borderRadius: 8,
-                          fontSize: 12,
-                          fontWeight: 700,
-                          letterSpacing: "0.1em",
-                          textTransform: "uppercase",
-                          textDecoration: "none",
-                          border: plan.highlight
-                            ? "none"
-                            : "1px solid rgba(30,100,200,0.5)",
-                        }}
                       >
                         Reservar Turno
                       </a>
@@ -679,47 +274,17 @@ export default function App() {
 
                 {/* Jubilados */}
                 {service.jubilados && (
-                  <div className="card" style={{ padding: "24px 28px" }}>
-                    <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 10,
-                        marginBottom: 16,
-                        flexWrap: "wrap",
-                      }}
-                    >
-                      <span style={{ fontSize: 22 }}>👴👵</span>
-                      <span
-                        className="font-display"
-                        style={{
-                          fontSize: 12,
-                          fontWeight: 700,
-                          color: "#4a8ad8",
-                          letterSpacing: "0.15em",
-                          textTransform: "uppercase",
-                        }}
-                      >
+                  <div className="card px-7 py-6">
+                    <div className="flex items-center gap-2.5 mb-4 flex-wrap">
+                      <span className="text-[22px]">👴👵</span>
+                      <span className="font-display text-xs font-bold text-mena-accent tracking-[0.15em] uppercase">
                         Descuento a Jubilados
                       </span>
-                      <span
-                        style={{
-                          marginLeft: "auto",
-                          fontSize: 12,
-                          color: "#3a5a7a",
-                          fontFamily: "Inter, sans-serif",
-                        }}
-                      >
+                      <span className="ml-auto text-xs text-mena-faint font-body">
                         Presentando carnet de jubilado
                       </span>
                     </div>
-                    <div
-                      style={{
-                        display: "grid",
-                        gridTemplateColumns: "1fr 1fr",
-                        gap: 12,
-                      }}
-                    >
+                    <div className="grid grid-cols-2 gap-3">
                       {[
                         {
                           label: "Lavado Clásico",
@@ -732,32 +297,12 @@ export default function App() {
                       ].map((item) => (
                         <div
                           key={item.label}
-                          style={{
-                            textAlign: "center",
-                            padding: "12px",
-                            background: "#0f1420",
-                            borderRadius: 10,
-                          }}
+                          className="text-center p-3 bg-mena-surface-raised rounded-[10px]"
                         >
-                          <p
-                            style={{
-                              fontSize: 10,
-                              color: "#3a5a7a",
-                              textTransform: "uppercase",
-                              letterSpacing: "0.1em",
-                              marginBottom: 4,
-                            }}
-                          >
+                          <p className="text-[10px] text-mena-faint uppercase tracking-[0.1em] mb-1">
                             {item.label}
                           </p>
-                          <p
-                            className="font-display"
-                            style={{
-                              fontSize: "1.5rem",
-                              fontWeight: 800,
-                              color: "#4a8ad8",
-                            }}
-                          >
+                          <p className="font-display text-2xl font-extrabold text-mena-accent">
                             {item.value}
                           </p>
                         </div>
@@ -772,69 +317,25 @@ export default function App() {
       </section>
 
       {/* GALERÍA */}
-      <section
-        id="galería"
-        style={{ padding: "72px 16px", maxWidth: 1152, margin: "0 auto" }}
-      >
-        <div style={{ textAlign: "center", marginBottom: 48 }}>
-          <p
-            style={{
-              fontSize: 11,
-              fontWeight: 700,
-              letterSpacing: "0.3em",
-              color: "#3a6aaa",
-              textTransform: "uppercase",
-              marginBottom: 10,
-            }}
-          >
+      <section id="galería" className="py-[72px] px-4 max-w-[1152px] mx-auto">
+        <div className="text-center mb-12">
+          <p className="text-[11px] font-bold tracking-[0.3em] text-mena-deep uppercase mb-2.5">
             Nuestros Trabajos
           </p>
-          <h2
-            className="font-display chrome-text"
-            style={{ fontSize: "clamp(2rem, 5vw, 3rem)", fontWeight: 900 }}
-          >
+          <h2 className="font-display chrome-text text-[clamp(2rem,5vw,3rem)] font-black">
             GALERÍA
           </h2>
         </div>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-            gap: 14,
-          }}
-        >
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-3.5">
           {gallery.map((img, i) => (
             <div
               key={i}
-              style={{
-                borderRadius: 14,
-                overflow: "hidden",
-                aspectRatio: "4/3",
-                position: "relative",
-              }}
-              onMouseEnter={(e) => {
-                const el = e.currentTarget.querySelector(
-                  "img",
-                ) as HTMLImageElement | null
-                if (el) el.style.transform = "scale(1.05)"
-              }}
-              onMouseLeave={(e) => {
-                const el = e.currentTarget.querySelector(
-                  "img",
-                ) as HTMLImageElement | null
-                if (el) el.style.transform = "scale(1)"
-              }}
+              className="group rounded-[14px] overflow-hidden aspect-[4/3] relative"
             >
               <ImageWithFallback
                 src={img.src}
                 alt={img.alt}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                  transition: "transform 0.45s ease",
-                  display: "block",
-                }}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 block"
               />
             </div>
           ))}
@@ -842,117 +343,38 @@ export default function App() {
       </section>
 
       {/* REVIEWS */}
-      <section
-        style={{ padding: "72px 16px", maxWidth: 1152, margin: "0 auto" }}
-      >
-        <div style={{ textAlign: "center", marginBottom: 48 }}>
-          <p
-            style={{
-              fontSize: 11,
-              fontWeight: 700,
-              letterSpacing: "0.3em",
-              color: "#3a6aaa",
-              textTransform: "uppercase",
-              marginBottom: 10,
-            }}
-          >
+      <section className="py-[72px] px-4 max-w-[1152px] mx-auto">
+        <div className="text-center mb-12">
+          <p className="text-[11px] font-bold tracking-[0.3em] text-mena-deep uppercase mb-2.5">
             Lo que dicen nuestros clientes
           </p>
-          <h2
-            className="font-display chrome-text"
-            style={{
-              fontSize: "clamp(2rem, 5vw, 3rem)",
-              fontWeight: 900,
-              marginBottom: 20,
-            }}
-          >
+          <h2 className="font-display chrome-text text-[clamp(2rem,5vw,3rem)] font-black mb-5">
             OPINIONES
           </h2>
-          <div
-            className="divider"
-            style={{ maxWidth: 200, margin: "0 auto" }}
-          />
+          <div className="divider max-w-[200px] mx-auto" />
         </div>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-            gap: 20,
-          }}
-        >
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-5">
           {reviews.map((review, i) => (
-            <div
-              key={i}
-              className="card"
-              style={{
-                padding: "28px 24px",
-                display: "flex",
-                flexDirection: "column",
-                gap: 18,
-              }}
-            >
-              <div style={{ display: "flex", gap: 3 }}>
+            <div key={i} className="card px-6 py-7 flex flex-col gap-[18px]">
+              <div className="flex gap-1">
                 {Array.from({ length: 5 }).map((_, s) => (
-                  <span key={s} style={{ color: "#c08020", fontSize: 15 }}>
+                  <span key={s} className="text-mena-star text-[15px]">
                     ★
                   </span>
                 ))}
               </div>
-              <p
-                style={{
-                  fontSize: 14,
-                  color: "#aac0d8",
-                  lineHeight: 1.65,
-                  fontFamily: "Inter, sans-serif",
-                  flex: 1,
-                }}
-              >
+              <p className="text-sm text-mena-soft leading-[1.65] font-body flex-1">
                 "{review.text}"
               </p>
-              <div
-                style={{
-                  borderTop: "1px solid rgba(30,80,180,0.2)",
-                  paddingTop: 14,
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 10,
-                }}
-              >
-                <div
-                  style={{
-                    width: 32,
-                    height: 32,
-                    borderRadius: "50%",
-                    background: "#141c2e",
-                    border: "1px solid rgba(30,80,180,0.35)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontSize: 14,
-                    flexShrink: 0,
-                  }}
-                >
+              <div className="border-t border-mena-border/20 pt-3.5 flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-full bg-mena-surface-soft border border-mena-border/35 flex items-center justify-center text-sm flex-shrink-0">
                   ⭐
                 </div>
                 <div>
-                  <p
-                    className="font-display"
-                    style={{
-                      fontSize: 11,
-                      fontWeight: 700,
-                      color: "#4a8ad8",
-                      letterSpacing: "0.1em",
-                    }}
-                  >
+                  <p className="font-display text-[11px] font-bold text-mena-accent tracking-[0.1em]">
                     {review.author ?? "Cliente verificado"}
                   </p>
-                  <p
-                    style={{
-                      fontSize: 11,
-                      color: "#2a4a6a",
-                      fontFamily: "Inter, sans-serif",
-                    }}
-                  >
+                  <p className="text-[11px] text-mena-navy font-body">
                     Reseña en Google Maps
                   </p>
                 </div>
@@ -963,119 +385,44 @@ export default function App() {
       </section>
 
       {/* CONTACTO */}
-      <section id="contacto" style={{ padding: "72px 16px" }}>
-        <div style={{ maxWidth: 720, margin: "0 auto", textAlign: "center" }}>
-          <p
-            style={{
-              fontSize: 11,
-              fontWeight: 700,
-              letterSpacing: "0.3em",
-              color: "#3a6aaa",
-              textTransform: "uppercase",
-              marginBottom: 10,
-            }}
-          >
+      <section id="contacto" className="py-[72px] px-4">
+        <div className="max-w-[720px] mx-auto text-center">
+          <p className="text-[11px] font-bold tracking-[0.3em] text-mena-deep uppercase mb-2.5">
             Contactate con Nosotros
           </p>
-          <h2
-            className="font-display chrome-text"
-            style={{
-              fontSize: "clamp(2rem, 5vw, 3rem)",
-              fontWeight: 900,
-              marginBottom: 10,
-            }}
-          >
+          <h2 className="font-display chrome-text text-[clamp(2rem,5vw,3rem)] font-black mb-2.5">
             ¡YA TENEMOS WHATSAPP!
           </h2>
-          <p
-            style={{
-              fontSize: 15,
-              color: "#4a6a8a",
-              fontWeight: 600,
-              marginBottom: 36,
-            }}
-          >
+          <p className="text-[15px] text-mena-dim font-semibold mb-9">
             Agendá tu turno de forma rápida y sencilla.
           </p>
 
           {/* Contact card */}
-          <div
-            className="card-highlight"
-            style={{ padding: "40px 32px", borderRadius: 20, marginBottom: 20 }}
-          >
-            <p
-              style={{
-                fontSize: 11,
-                fontWeight: 700,
-                letterSpacing: "0.25em",
-                color: "#4a8ad8",
-                textTransform: "uppercase",
-                marginBottom: 12,
-              }}
-            >
+          <div className="card-highlight px-8 py-10 rounded-[20px] mb-5">
+            <p className="text-[11px] font-bold tracking-[0.25em] text-mena-accent uppercase mb-3">
               Turnos y Consultas
             </p>
             <a
               href={WHATSAPP_URL}
-              className="font-display chrome-text"
-              style={{
-                fontSize: "clamp(2.2rem, 8vw, 4rem)",
-                fontWeight: 900,
-                display: "block",
-                marginBottom: 28,
-                textDecoration: "none",
-              }}
+              className="font-display chrome-text text-[clamp(2.2rem,8vw,4rem)] font-black block mb-7 no-underline"
             >
               {PHONE_DISPLAY}
             </a>
             <a
               href={WHATSAPP_URL}
-              className="btn-primary font-display"
-              style={{
-                display: "inline-block",
-                padding: "14px 36px",
-                borderRadius: 10,
-                fontSize: 14,
-                fontWeight: 700,
-                letterSpacing: "0.08em",
-                textTransform: "uppercase",
-                textDecoration: "none",
-              }}
+              className="btn-primary font-display inline-block px-9 py-3.5 rounded-[10px] text-sm font-bold tracking-[0.08em] uppercase no-underline"
             >
               📱 ¡Escribinos y Reservá tu Turno!
             </a>
           </div>
 
           {/* Social + Maps buttons */}
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              gap: 12,
-              justifyContent: "center",
-              marginBottom: 28,
-            }}
-          >
+          <div className="flex flex-wrap gap-3 justify-center mb-7">
             <a
               href={INSTAGRAM_URL}
               target="_blank"
               rel="noopener noreferrer"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 8,
-                padding: "10px 20px",
-                borderRadius: 10,
-                fontWeight: 700,
-                fontSize: 13,
-                background:
-                  "linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045)",
-                color: "#fff",
-                textDecoration: "none",
-                transition: "opacity 0.15s",
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
-              onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+              className="ig-gradient flex items-center gap-2 px-5 py-2.5 rounded-[10px] font-bold text-[13px] text-white no-underline transition-opacity hover:opacity-85"
             >
               {igIcon} {INSTAGRAM_HANDLE}
             </a>
@@ -1083,41 +430,14 @@ export default function App() {
               href={MAPS_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-outline"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 8,
-                padding: "10px 20px",
-                borderRadius: 10,
-                fontWeight: 700,
-                fontSize: 13,
-                textDecoration: "none",
-                border: "1px solid rgba(30,100,200,0.4)",
-                color: "#6a9ad4",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = "rgba(30,100,200,0.8)"
-                e.currentTarget.style.color = "#fff"
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = "rgba(30,100,200,0.4)"
-                e.currentTarget.style.color = "#6a9ad4"
-              }}
+              className="btn-outline flex items-center gap-2 px-5 py-2.5 rounded-[10px] font-bold text-[13px] no-underline"
             >
               📍 {ADDRESS}
             </a>
           </div>
 
           {/* Map embed */}
-          <div
-            style={{
-              borderRadius: 16,
-              overflow: "hidden",
-              border: "1px solid rgba(30,80,180,0.3)",
-              height: 320,
-            }}
-          >
+          <div className="rounded-2xl overflow-hidden border border-mena-border/30 h-80">
             <iframe
               title={`Ubicación ${BUSINESS_NAME}`}
               src={MAPS_EMBED_URL}
@@ -1137,88 +457,33 @@ export default function App() {
       </section>
 
       {/* FOOTER */}
-      <footer
-        style={{
-          padding: "36px 16px",
-          borderTop: "1px solid rgba(30,80,180,0.15)",
-          textAlign: "center",
-        }}
-      >
-        <div style={{ maxWidth: 1152, margin: "0 auto" }}>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: 10,
-              marginBottom: 14,
-            }}
-          >
-            <span
-              className="font-display chrome-text"
-              style={{ fontSize: 22, fontWeight: 900, letterSpacing: "0.15em" }}
-            >
+      <footer className="py-9 px-4 border-t border-mena-border/15 text-center">
+        <div className="max-w-[1152px] mx-auto">
+          <div className="flex items-center justify-center gap-2.5 mb-3.5">
+            <span className="font-display chrome-text text-[22px] font-black tracking-[0.15em]">
               MENA
             </span>
-            <span
-              style={{
-                fontSize: 10,
-                letterSpacing: "0.4em",
-                color: "#2a4a6a",
-                textTransform: "uppercase",
-              }}
-            >
+            <span className="text-[10px] tracking-[0.4em] text-mena-navy uppercase">
               Car Wash
             </span>
           </div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              gap: 24,
-              marginBottom: 14,
-              flexWrap: "wrap",
-            }}
-          >
+          <div className="flex justify-center gap-6 mb-3.5 flex-wrap">
             <a
               href={INSTAGRAM_URL}
               target="_blank"
               rel="noopener noreferrer"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 6,
-                fontSize: 13,
-                fontWeight: 600,
-                color: "#b05090",
-                textDecoration: "none",
-              }}
+              className="flex items-center gap-1.5 text-[13px] font-semibold text-mena-pink-deep no-underline"
             >
               {igIcon} {INSTAGRAM_HANDLE}
             </a>
             <a
               href={WHATSAPP_URL}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 6,
-                fontSize: 13,
-                fontWeight: 600,
-                color: "#3a8a4a",
-                textDecoration: "none",
-              }}
+              className="flex items-center gap-1.5 text-[13px] font-semibold text-mena-green no-underline"
             >
               📱 {PHONE_DISPLAY}
             </a>
           </div>
-          <p
-            style={{
-              fontSize: 11,
-              color: "#1a3050",
-              letterSpacing: "0.08em",
-              fontFamily: "Inter, sans-serif",
-            }}
-          >
+          <p className="text-[11px] text-mena-navy-deep tracking-[0.08em] font-body">
             Más brillo, más cuidado, mejores resultados. · {ADDRESS}
           </p>
         </div>
