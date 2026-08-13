@@ -1,7 +1,7 @@
-import { WHATSAPP_URL } from "@/config/site"
 import { heroStrip } from "@/data/gallery"
 import Container from "@/components/layout/Container"
 import { ImageWithFallback } from "@/components/shared/ImageWithFallback"
+import WhatsAppLink from "@/components/shared/WhatsAppLink"
 
 const priceTeasers = [
   { label: "Autos desde", value: "$27.000" },
@@ -32,12 +32,9 @@ export default function Hero() {
         </p>
 
         <div className="flex flex-wrap gap-3.5 justify-center mb-14">
-          <a
-            href={WHATSAPP_URL}
-            className="btn-primary font-display px-8 py-3.5 rounded-[10px] text-[15px] tracking-[0.08em] no-underline uppercase"
-          >
+          <WhatsAppLink className="px-8 py-3.5 rounded-[10px] text-[15px] tracking-[0.08em] uppercase">
             📱 Reservar por WhatsApp
-          </a>
+          </WhatsAppLink>
           <a
             href="#precios"
             className="btn-outline font-display px-8 py-3.5 rounded-[10px] text-[15px] tracking-[0.08em] no-underline uppercase"

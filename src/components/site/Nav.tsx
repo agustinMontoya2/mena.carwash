@@ -1,6 +1,6 @@
-import { INSTAGRAM_HANDLE, INSTAGRAM_URL, WHATSAPP_URL } from "@/config/site"
 import Container from "@/components/layout/Container"
-import InstagramIcon from "@/components/shared/InstagramIcon"
+import InstagramLink from "@/components/shared/InstagramLink"
+import WhatsAppLink from "@/components/shared/WhatsAppLink"
 
 const NAV_LINKS = ["Servicios", "Precios", "Galería", "Contacto"]
 
@@ -26,21 +26,11 @@ export default function Nav() {
               {item}
             </a>
           ))}
-          <a
-            href={INSTAGRAM_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 text-[13px] font-semibold text-mena-pink no-underline"
-          >
-            <InstagramIcon /> {INSTAGRAM_HANDLE}
-          </a>
+          <InstagramLink className="flex items-center gap-1.5 text-[13px] font-semibold text-mena-pink" />
         </div>
-        <a
-          href={WHATSAPP_URL}
-          className="btn-primary font-display px-[18px] py-2 rounded-lg text-[13px] tracking-[0.08em] no-underline"
-        >
+        <WhatsAppLink className="px-[18px] py-2 rounded-lg text-[13px] tracking-[0.08em]">
           RESERVAR TURNO
-        </a>
+        </WhatsAppLink>
       </Container>
     </nav>
   )

@@ -10,13 +10,17 @@ import Footer from "@/components/site/Footer"
 export default function App() {
   return (
     <div className="bg-mena-bg text-mena-text min-h-screen">
-      <Nav />
-      <Hero />
-      <Features />
-      <Pricing />
-      <Gallery />
-      <Reviews />
-      <Contact />
+      <header>
+        <Nav />
+      </header>
+      <main>
+        <Hero />
+        <Features />
+        <Pricing />
+        <Gallery />
+        <Reviews />
+        <Contact />
+      </main>
       <Footer />
     </div>
   )

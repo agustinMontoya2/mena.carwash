@@ -17,6 +17,8 @@ export function ImageWithFallback({
   if (error) {
     return (
       <div
+        role="img"
+        aria-label={alt}
         className={`${className ?? ""} bg-mena-fallback flex items-center justify-center`}
         style={style}
       >

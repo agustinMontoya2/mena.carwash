@@ -1,5 +1,5 @@
-import { WHATSAPP_URL } from "@/config/site"
 import type { Plan } from "@/types"
+import WhatsAppLink from "@/components/shared/WhatsAppLink"
 
 interface Props {
   plan: Plan
@@ -39,16 +39,12 @@ export default function PricingCard({ plan }: Props) {
           </li>
         ))}
       </ul>
-      <a
-        href={WHATSAPP_URL}
-        className={
-          plan.highlight
-            ? "btn-primary font-display block text-center py-[11px] rounded-lg text-xs font-bold tracking-[0.1em] uppercase no-underline"
-            : "btn-outline font-display block text-center py-[11px] rounded-lg text-xs font-bold tracking-[0.1em] uppercase no-underline"
-        }
+      <WhatsAppLink
+        variant={plan.highlight ? "primary" : "outline"}
+        className="block text-center py-[11px] rounded-lg text-xs font-bold tracking-[0.1em] uppercase"
       >
         Reservar Turno
-      </a>
+      </WhatsAppLink>
     </div>
   )
 }
