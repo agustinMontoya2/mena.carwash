@@ -52,11 +52,7 @@ export default function Contact() {
           src={MAPS_EMBED_URL}
           width="100%"
           height="100%"
-          style={{
-            border: 0,
-            filter:
-              "invert(88%) hue-rotate(180deg) saturate(0.7) brightness(0.8)",
-          }}
+          className="map-frame"
           allowFullScreen
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
