@@ -77,6 +77,10 @@ Requirements:
 - "resolver MCS-<ID>" means only: run `start-ticket`, implement the change, and verify with the quality commands. It never commits, pushes, or creates a PR.
 - Committing, pushing, and creating the PR are each **separate, explicit requests** — never do them from "resolver".
 
+### Phase delivery
+
+Small related tickets are grouped into **phases** (see `planning/README.md` → "Fases de entrega"). A phase is one branch/PR covering several tickets; resolve the phase tickets together, then ship and PR once. Update the planning README statuses only when the phase PR is created or merged.
+
 ## Quality commands
 
 Run these before considering a change done:
