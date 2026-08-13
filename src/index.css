@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+@import 'tailwindcss';
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  background-color: #0a0a0a;
+  color: #e0e8f0;
+  font-family: 'Rajdhani', sans-serif;
+  scroll-behavior: smooth;
+}
+
+.font-display {
+  font-family: 'Orbitron', sans-serif;
+}
+
+/* Chrome metallic title — no glow, just gradient contrast */
+.chrome-text {
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #d8e8f8 20%,
+    #8aaec8 50%,
+    #c8dced 70%,
+    #ffffff 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Deep chrome for the big MENA hero title */
+.chrome-hero {
+  background: linear-gradient(
+    175deg,
+    #ffffff 0%,
+    #e0eef8 15%,
+    #7898b8 40%,
+    #1a3a5a 55%,
+    #5888b0 68%,
+    #d8eaf8 82%,
+    #ffffff 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.8));
+}
+
+.card {
+  background: #111318;
+  border: 1px solid rgba(30, 100, 200, 0.35);
+  border-radius: 16px;
+}
+
+.card-highlight {
+  background: #111318;
+  border: 1px solid rgba(30, 120, 220, 0.7);
+  border-radius: 16px;
+}
+
+.btn-primary {
+  background: #1a5fd4;
+  color: #ffffff;
+  font-weight: 700;
+  transition: background 0.18s;
+}
+
+.btn-primary:hover {
+  background: #1a6cf0;
+}
+
+.btn-outline {
+  border: 1px solid rgba(30, 100, 200, 0.5);
+  color: #7aabf0;
+  transition: border-color 0.18s, color 0.18s;
+}
+
+.btn-outline:hover {
+  border-color: rgba(30, 120, 220, 0.9);
+  color: #fff;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, #1a5fd4, transparent);
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #0a0a0a; }
+::-webkit-scrollbar-thumb { background: #1a5fd4; border-radius: 2px; }
