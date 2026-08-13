@@ -1,9 +1,9 @@
-import type { GalleryImage } from "@/types";
-import carGray from "@/imports/image-1.png";
-import carInterior from "@/imports/image-2.png";
-import moto from "@/imports/image-3.png";
-import pickupSilver from "@/imports/image-4.png";
-import pickupBlue from "@/imports/image-5.png";
+import type { GalleryImage } from "@/types"
+import carGray from "@/imports/image-1.png"
+import carInterior from "@/imports/image-2.png"
+import moto from "@/imports/image-3.png"
+import pickupSilver from "@/imports/image-4.png"
+import pickupBlue from "@/imports/image-5.png"
 
 export const gallery: GalleryImage[] = [
   { src: pickupSilver, alt: "Camioneta plateada recién lavada" },
@@ -11,4 +11,4 @@ export const gallery: GalleryImage[] = [
   { src: carGray, alt: "Auto gris con brillo perfecto" },
   { src: carInterior, alt: "Interior de Audi A3 impecable" },
   { src: moto, alt: "Moto Honda blanca reluciente" },
-];
+]
