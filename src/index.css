@@ -123,6 +123,12 @@ html, body {
   );
 }
 
+/* Google Maps embed dark filter */
+.map-frame {
+  border: 0;
+  filter: invert(88%) hue-rotate(180deg) saturate(0.7) brightness(0.8);
+}
+
 @utility card {
   background: var(--color-mena-surface);
   border: 1px solid color-mix(in srgb, var(--color-mena-border) 35%, transparent);

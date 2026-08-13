@@ -66,8 +66,9 @@ export default function Hero() {
               key={i}
               src={img.src}
               alt={img.alt}
-              className="h-full w-auto object-cover rounded-xl flex-shrink-0"
-              style={{ maxWidth: i === 3 ? 240 : 380 }}
+              className={`h-full w-auto object-cover rounded-xl flex-shrink-0 ${
+                i === 3 ? "max-w-[240px]" : "max-w-[380px]"
+              }`}
             />
           ))}
         </div>
