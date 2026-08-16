@@ -1,14 +1,8 @@
-import {
-  Autoplay,
-  EffectCoverflow,
-  Navigation,
-  Pagination,
-} from "swiper/modules"
+import { Autoplay, EffectCoverflow, Pagination } from "swiper/modules"
 import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/css"
 import "swiper/css/effect-coverflow"
 import "swiper/css/pagination"
-import "swiper/css/navigation"
 import type { GalleryImage } from "@/types"
 import { ImageWithFallback } from "@/components/shared/ImageWithFallback"
 
@@ -20,7 +14,7 @@ export default function Carousel({ images }: Props) {
   return (
     <div className="carousel">
       <Swiper
-        modules={[Autoplay, EffectCoverflow, Navigation, Pagination]}
+        modules={[Autoplay, EffectCoverflow, Pagination]}
         effect="coverflow"
         grabCursor
         centeredSlides
@@ -39,7 +33,6 @@ export default function Carousel({ images }: Props) {
           disableOnInteraction: false,
           pauseOnMouseEnter: true,
         }}
-        navigation
         pagination
       >
         {images.map((image) => (
